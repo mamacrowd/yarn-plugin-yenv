@@ -1,0 +1,25 @@
+{
+  "name": "yarn-plugin-yenv",
+  "main": "./sources/index.ts",
+  "repository": "git@github.com:mamacrowd/yarn-plugins.git",
+  "dependencies": {
+    "@yarnpkg/cli": "^4.0.0",
+    "@yarnpkg/core": "^4.0.0",
+    "@yarnpkg/plugin-essentials": "^4.0.2",
+    "@yarnpkg/plugin-pack": "^4.0.0",
+    "clipanion": "^4.0.0-rc.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@yarnpkg/builder": "^4.0.0",
+    "rimraf": "5.0.0",
+    "typescript": "5.3.0-beta"
+  },
+  "scripts": {
+    "build": "builder build plugin",
+    "build:dev": "builder build plugin --no-minify",
+    "clean": "rimraf bundles"
+  },
+  "packageManager": "yarn@4.0.2"
+}
