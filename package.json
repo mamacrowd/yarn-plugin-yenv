@@ -1,5 +1,6 @@
 {
   "name": "yarn-plugin-yenv",
+  "version": "0.1.0",
   "main": "./sources/index.ts",
   "repository": "git@github.com:mamacrowd/yarn-plugins.git",
   "dependencies": {
@@ -21,5 +22,8 @@
     "build:dev": "builder build plugin --no-minify",
     "clean": "rimraf bundles"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.0.2",
+  "files": [
+    "./bundles"
+  ]
 }
