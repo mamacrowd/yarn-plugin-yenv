@@ -23,6 +23,7 @@ jobs:
           corepack enable
           yarn set version berry
           yarn config set npmScopes.mamacrowd.npmRegistryServer https://npm.pkg.github.com
+          yarn config set npmScopes.mamacrowd.npmPublishRegistry https://npm.pkg.github.com
           yarn config set npmScopes.mamacrowd.npmAuthToken ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
