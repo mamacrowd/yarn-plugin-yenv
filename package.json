@@ -1,8 +1,8 @@
 {
-  "name": "yarn-plugin-yenv",
+  "name": "@mamacrowd/yarn-plugin-yenv",
   "version": "0.1.0",
   "main": "./sources/index.ts",
-  "repository": "git@github.com:mamacrowd/yarn-plugins.git",
+  "repository": "git@github.com:mamacrowd/yarn-plugin-yenv.git",
   "dependencies": {
     "@yarnpkg/cli": "^4.0.0",
     "@yarnpkg/core": "^4.0.0",

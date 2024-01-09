@@ -32,3 +32,8 @@ jobs:
         run: yarn build
 
       - run: yarn npm publish
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yenv
+          path: bundles/@yarnpkg/plugin-yenv.js
