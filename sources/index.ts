@@ -2,15 +2,6 @@ import { Hooks, Plugin, SettingsType } from '@yarnpkg/core';
 import * as dotenv from "dotenv";
 import * as path from 'path';
 const checkStr = (s: string) => s !== undefined && s.trim() !== ''
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      DOTENV_CONFIG_PATH: string;
-      NODE_ENV: string;
-      ENVFILE_DIR: string;
-    }
-  }
-}
 
 declare module '@yarnpkg/core' {
   interface ConfigurationValueMap {
@@ -33,15 +24,12 @@ const plugin: Plugin<Hooks> = {
       scriptEnv.YENV = 'LOAD';
       const {configuration} = project;
       const IS_DEBUG = configuration.get(`yenvDebug`);
-      const DOTENV_CONFIG_PATH = process.env.DOTENV_CONFIG_PATH;
-      const NODE_ENV = process.env.NODE_ENV;
-      let ENVFILE_DIR = process.env.ENVFILE_DIR;
+      const DOTENV_CONFIG_PATH = scriptEnv.DOTENV_CONFIG_PATH;
+      const NODE_ENV = scriptEnv.NODE_ENV;
+      const ENVFILE_DIR = path.join(project.cwd, scriptEnv.ENVFILE_DIR ?? "");
       let envFile = '';
       if (checkStr(DOTENV_CONFIG_PATH)){
         envFile = DOTENV_CONFIG_PATH;
-      }
-      if (checkStr(ENVFILE_DIR)){
-        ENVFILE_DIR = path.join(project.cwd, ENVFILE_DIR);
       }
       if (checkStr(NODE_ENV)){
           envFile = path.join(ENVFILE_DIR ?? "", `.env.${NODE_ENV.toLowerCase()}`);
