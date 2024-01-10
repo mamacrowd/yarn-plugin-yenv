@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: yarn build
 
-      - run: yarn npm publish
+      #- run: yarn npm publish
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
