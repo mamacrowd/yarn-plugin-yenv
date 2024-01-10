@@ -1,6 +1,6 @@
 {
   "name": "@mamacrowd/yarn-plugin-yenv",
-  "version": "0.3.0",
+  "version": "0.1.1",
   "main": "./sources/index.ts",
   "repository": "git@github.com:mamacrowd/yarn-plugin-yenv.git",
   "dependencies": {
@@ -22,7 +22,7 @@
     "build:dev": "builder build plugin --no-minify",
     "clean": "rimraf bundles",
     "app:version": "echo $npm_package_version",
-    "tag": "test \"$(git status --porcelain)\" && echo 'Please commit before version' || yarn version ${0} && git commit -am \"Bump to\"$(yarn app:version) && git tag 'v'$(yarn app:version)"
+    "tag": "test \"$(git status --porcelain)\" && echo 'Please commit before version' || (yarn version ${0} && git commit -am \"Bump to\"$(yarn app:version) && git tag 'v'$(yarn app:version))"
   },
   "packageManager": "yarn@4.0.2",
   "files": [
