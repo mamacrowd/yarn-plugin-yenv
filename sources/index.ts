@@ -7,6 +7,7 @@ declare global {
     interface ProcessEnv {
       DOTENV_CONFIG_PATH: string;
       NODE_ENV: string;
+      ENVFILE_DIR: string;
     }
   }
 }
@@ -34,12 +35,16 @@ const plugin: Plugin<Hooks> = {
       const IS_DEBUG = configuration.get(`yenvDebug`);
       const DOTENV_CONFIG_PATH = process.env.DOTENV_CONFIG_PATH;
       const NODE_ENV = process.env.NODE_ENV;
+      let ENVFILE_DIR = process.env.ENVFILE_DIR;
       let envFile = '';
       if (checkStr(DOTENV_CONFIG_PATH)){
         envFile = DOTENV_CONFIG_PATH;
       }
+      if (checkStr(ENVFILE_DIR)){
+        ENVFILE_DIR = path.join(project.cwd, ENVFILE_DIR);
+      }
       if (checkStr(NODE_ENV)){
-          envFile = path.join(project.cwd ?? "", `.env.${NODE_ENV.toLowerCase()}`);
+          envFile = path.join(ENVFILE_DIR ?? "", `.env.${NODE_ENV.toLowerCase()}`);
       }
       if (IS_DEBUG) console.debug(`Resolved .env file: ${envFile}`);
       if (checkStr(envFile)) {
