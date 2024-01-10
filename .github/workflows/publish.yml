@@ -34,7 +34,9 @@ jobs:
 
       - run: yarn npm publish
 
-      - uses: actions/upload-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        id: create-release
         with:
-          name: yenv
-          path: bundles/@yarnpkg/plugin-yenv.js
+          files: |
+            bundles/@yarnpkg/plugin-yenv.js
